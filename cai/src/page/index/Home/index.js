@@ -9,7 +9,7 @@ const Home = () =>
    //余额
    const Money = 120;
    const [loading, setLoading] = useState(true); // 用于控制骨架的显示
-   const [value ,setValue] = useState([]);//用于管理请求数据
+   const [value ,setValue] = useState([]);//用于管理请求数据  
    const demoLongText = [
     { key:1 , text:"爱自己这件事永远来的急" },
     { key:2 , text:"我不需人陪 我自寻找浪漫" },
@@ -93,10 +93,14 @@ const Home = () =>
             </Swiper>
          </div>
          }
-         <NoticeBar content={demoLongText.map(item=>       
+         <NoticeBar className="Home-NoticeBar" content={demoLongText.map(item=>       
            <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>   
-         )} color='alert' />
+         )}/>
       </div>   
    )
 }
 export default Home;
+
+
+
+

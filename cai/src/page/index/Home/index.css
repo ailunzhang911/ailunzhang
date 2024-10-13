@@ -14,3 +14,10 @@
     border-radius: 15px;
   }
 }
+
+.Home-NoticeBar
+{
+   --background-color:#F2F4FD;
+   --border-color:#F2F4FD;
+   --text-color:#000000;
+}
