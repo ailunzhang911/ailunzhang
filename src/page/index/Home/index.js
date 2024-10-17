@@ -1,4 +1,5 @@
-import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid , Tabs } from 'antd-mobile';
+import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar } from 'antd-mobile';
+import classnames from 'classnames';
 import { useState , useEffect } from 'react';
 import './index.css';
 import { http } from '@/utils';
@@ -8,9 +9,9 @@ const Home = () =>
    const token = true;
    //余额
    const Money = 120;
-   const [loading, setLoading] = useState(true); // 用于控制骨架的显示
-   const [GridData, setGridData] = useState('cai');
-   const [value ,setValue] = useState([]);//用于管理请求数据     
+   const [loading, setLoading] = useState(true); // 用于控制骨架的显示   
+   const [value ,setValue] = useState([]);//用于管理请求数据 
+   const [activeTab, setActiveTab] = useState('Index');//用于管理Tabs切换
    const demoLongText = [
     { key:1 , text:"爱自己这件事永远来的急" },
     { key:2 , text:"我不需人陪 我自寻找浪漫" },
@@ -31,24 +32,7 @@ const Home = () =>
        }
      };
      fetchData();
-   }, []);
-   const caizhong = () => {
-      switch(GridData)
-      {
-         case 'cai':
-            return <div>这是首页的内容</div>;
-         case 'tiyu':
-            return <div>这是第一个页面的内容</div>;
-         case 'dianzi':
-            return <div>这是第二个页面的内容</div>;
-         case 'qipai':
-            return <div>这是第三个页面的内容</div>;
-         case 'qipai':
-            return <div>这是第四个页面的内容</div>;
-         default:
-            return <div>页面不存在</div>;
-      }                        
-   };
+   }, []);   
    return (     
       <div className="Home-index">
          <div className="w-full h-14 flex">
@@ -112,53 +96,68 @@ const Home = () =>
             </Swiper>
          </div>
          }
-         <NoticeBar className="Home-NoticeBar" content={demoLongText.map(item=>       
-           <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>   
-         )}/>
-         <Grid columns={5} gap={8}>
-            <Grid.Item>
-               <div className="Grid" onClick={()=>{setGridData('cai')}}>
-                  <Image                  
-                     height="100%"
-                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
-                  />
-               </div>               
-            </Grid.Item>
-            <Grid.Item>
-               <div className="Grid" onClick={()=>{setGridData('tiyu')}}>
-                  <Image                  
-                     height="100%"
-                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
-                  />
-               </div>               
-            </Grid.Item>
-            <Grid.Item>
-               <div className="Grid" onClick={()=>{setGridData('dianzi')}}>
-                  <Image                  
-                     height="100%"
-                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
-                  />
-               </div>               
-            </Grid.Item>
-            <Grid.Item>
-               <div className="Grid" onClick={()=>{setGridData('qipai')}}>
-                  <Image                  
-                     height="100%"
-                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
-                  />
-               </div>               
-            </Grid.Item>
-            <Grid.Item>
-               <div className="Grid" onClick={()=>{setGridData('pg')}}>
-                  <Image                  
-                     height="100%"
-                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
-                  />
-               </div>               
-            </Grid.Item>                        
-         </Grid>
-         {caizhong()}
+         <NoticeBar 
+            className="Home-NoticeBar" 
+            content={demoLongText.map(
+              item=>       
+                 <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              )
+            }         
+         />
+         <div className="Home-Tabs">
+            <div
+               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'Index'})}
+               onClick={() => setActiveTab('Index')}
+            >
+                <Image 
+                   width="50%"
+                   height="50%" 
+                   src="https://174.35.80.24/siteadmin/skin/lobby_asset/1-0-common/common/_sprite/icon_dtfl_rm_1.avif?manualVersion=1&version=2d13910092" 
+                />
+                <span>热门</span>                
+            </div>
+            <div 
+               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'CaiPiao'})} 
+               onClick={() => setActiveTab('CaiPiao')}
+            >
+                <Image 
+                   width="50%"
+                   height="50%" 
+                   src="https://oss.vip9085aa6.top/siteadmin/skin/lobby_asset/1-0-common/common/_sprite/icon_dtfl_cp_1.avif?manualVersion=1&version=d5578aebfb" 
+                />
+                <span>彩票</span>
+            </div>
+            <div 
+              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'DianZi'})} 
+              onClick={() => setActiveTab('DianZi')}
+            >
+               <Image 
+                   width="50%"
+                   height="50%" 
+                   src="https://174.35.80.24/siteadmin/skin/lobby_asset/1-0-common/common/_sprite/icon_dtfl_dz_1.avif?manualVersion=1&version=4986151e69" 
+                />
+               <span>电子</span>
+            </div>        
+            <div 
+              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'TiYu'})} 
+              onClick={() => setActiveTab('TiYu')}
+            >
+               <Image 
+                   width="50%"
+                   height="50%" 
+                   src="https://oss.vip9085aa6.top/siteadmin/skin/lobby_asset/1-0-common/common/_sprite/icon_dtfl_ty_1.avif?manualVersion=1&version=43e268d5f9" 
+                />
+               <span>体育</span>               
+            </div>                                            
+         </div>
+         {/* Tab 内容 */}
+         <div className="Home-Tabs-Content">
+            {activeTab === 'Index' && <div>热门游戏</div>}
+            {activeTab === 'CaiPiao' && <div>彩票</div>}
+            {activeTab === 'DianZi' && <div>电子</div>}
+            {activeTab === 'TiYu' && <div>体育</div>}
+         </div>               
       </div>         
    )
 }
-export default Home;        
+export default Home;
