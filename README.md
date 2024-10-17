@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <h1 align="center">嗨👋，我是 Allen Zhang</h1>
 <h3 align="center">一名 React 开发爱好者。</h3>
 
