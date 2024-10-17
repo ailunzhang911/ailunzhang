@@ -1,4 +1,4 @@
-import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid } from 'antd-mobile';
+import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid , Tabs } from 'antd-mobile';
 import { useState , useEffect } from 'react';
 import './index.css';
 import { http } from '@/utils';
@@ -9,7 +9,8 @@ const Home = () =>
    //余额
    const Money = 120;
    const [loading, setLoading] = useState(true); // 用于控制骨架的显示
-   const [value ,setValue] = useState([]);//用于管理请求数据  
+   const [GridData, setGridData] = useState('cai');
+   const [value ,setValue] = useState([]);//用于管理请求数据     
    const demoLongText = [
     { key:1 , text:"爱自己这件事永远来的急" },
     { key:2 , text:"我不需人陪 我自寻找浪漫" },
@@ -30,7 +31,24 @@ const Home = () =>
        }
      };
      fetchData();
-   }, []);   
+   }, []);
+   const caizhong = () => {
+      switch(GridData)
+      {
+         case 'cai':
+            return <div>这是首页的内容</div>;
+         case 'tiyu':
+            return <div>这是第一个页面的内容</div>;
+         case 'dianzi':
+            return <div>这是第二个页面的内容</div>;
+         case 'qipai':
+            return <div>这是第三个页面的内容</div>;
+         case 'qipai':
+            return <div>这是第四个页面的内容</div>;
+         default:
+            return <div>页面不存在</div>;
+      }                        
+   };
    return (     
       <div className="Home-index">
          <div className="w-full h-14 flex">
@@ -99,22 +117,48 @@ const Home = () =>
          )}/>
          <Grid columns={5} gap={8}>
             <Grid.Item>
-               <div className="Grid">A</div>               
+               <div className="Grid" onClick={()=>{setGridData('cai')}}>
+                  <Image                  
+                     height="100%"
+                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
+                  />
+               </div>               
             </Grid.Item>
             <Grid.Item>
-               <div className="Grid">B</div>               
+               <div className="Grid" onClick={()=>{setGridData('tiyu')}}>
+                  <Image                  
+                     height="100%"
+                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
+                  />
+               </div>               
             </Grid.Item>
             <Grid.Item>
-               <div className="Grid">C</div>               
+               <div className="Grid" onClick={()=>{setGridData('dianzi')}}>
+                  <Image                  
+                     height="100%"
+                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
+                  />
+               </div>               
             </Grid.Item>
             <Grid.Item>
-               <div className="Grid">D</div>               
+               <div className="Grid" onClick={()=>{setGridData('qipai')}}>
+                  <Image                  
+                     height="100%"
+                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
+                  />
+               </div>               
             </Grid.Item>
             <Grid.Item>
-               <div className="Grid">E</div>               
+               <div className="Grid" onClick={()=>{setGridData('pg')}}>
+                  <Image                  
+                     height="100%"
+                     src="https://kk-hongkong-hall-new.dbq9.com/static/game/lottery_icon_home_new.png"
+                  />
+               </div>               
             </Grid.Item>                        
          </Grid>
+         {caizhong()}
       </div>         
    )
 }
-export default Home;
+export default Home;        
