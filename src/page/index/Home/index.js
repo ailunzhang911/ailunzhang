@@ -1,4 +1,4 @@
-import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar } from 'antd-mobile';
+import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid } from 'antd-mobile';
 import { useState , useEffect } from 'react';
 import './index.css';
 import { http } from '@/utils';
@@ -75,6 +75,7 @@ const Home = () =>
                }
             </div>
          </div>
+         
          {loading ? 
          <Skeleton animated className="Home-Skeleton" />
          :
@@ -96,11 +97,24 @@ const Home = () =>
          <NoticeBar className="Home-NoticeBar" content={demoLongText.map(item=>       
            <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>   
          )}/>
-      </div>   
+         <Grid columns={5} gap={8}>
+            <Grid.Item>
+               <div className="Grid">A</div>               
+            </Grid.Item>
+            <Grid.Item>
+               <div className="Grid">B</div>               
+            </Grid.Item>
+            <Grid.Item>
+               <div className="Grid">C</div>               
+            </Grid.Item>
+            <Grid.Item>
+               <div className="Grid">D</div>               
+            </Grid.Item>
+            <Grid.Item>
+               <div className="Grid">E</div>               
+            </Grid.Item>                        
+         </Grid>
+      </div>         
    )
 }
 export default Home;
-
-
-
-

@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { TabBar } from 'antd-mobile'
-import { Outlet , useNavigate } from 'react-router-dom';
+import { Outlet , useNavigate , useLocation } from 'react-router-dom';
 import './App.css';
 
 function App() {
   const [selectedIcon, setSelectedIcon] = useState('/Home');
   const Navigate = useNavigate();
+  const location = useLocation();
   const setRouteActive = (value) =>{
-      console.log(value)
-      Navigate(value)
-      setSelectedIcon(value)
+      Navigate(value);
+      setSelectedIcon(value); // 先更新状态      
   };
+  useEffect(() => {
+    setSelectedIcon(location.pathname);
+    if(location.pathname==='/')
+    {
+       Navigate('/Home');
+    }
+  }, [location.pathname]);
   const tabss = [
     {
       key: '/Home',
@@ -41,15 +48,17 @@ function App() {
       icon: <svg 
       t="1728573473057" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14282" width="20" height="20"><path d="M666.944 606.72c-3.2-1.856-6.976-13.504-0.192-37.568 72.768-76.928 117.696-187.136 117.696-290.112C784.448 115.328 667.776 0 507.52 0 347.648 0 235.904 114.368 235.904 278.144c0 104.448 45.376 215.424 118.848 291.904 7.36 24.064-2.24 32.704-8.32 35.392C273.6 631.04 0 724.736 0 854.4L0 1024l1024 0 0-191.552C988.544 713.6 729.728 626.816 666.944 606.72L666.944 606.72" fill={ selectedIcon === '/User' ? '#0014FF' : '#666666' } p-id="14283"></path></svg>
     },
-  ];  
+  ];
+  console.log(location.pathname);
   return (
     <div className="App">
        <div className="App-index">
           <Outlet/>
        </div>
-       <TabBar className="App-TabBar" onChange={setRouteActive}>
+       <TabBar activeKey={location.pathname} className="App-TabBar" onChange={setRouteActive}>
           {tabss.map(item => (
-            <TabBar.Item className="App-TabBar-Item" key={item.key} icon={item.icon} title={item.title} />
+            <TabBar.Item               
+              className="App-TabBar-Item" key={item.key} icon={item.icon} title={item.title} />
           ))}
        </TabBar>
     </div>
