@@ -1,4 +1,4 @@
-import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar } from 'antd-mobile';
+import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid} from 'antd-mobile';
 import classnames from 'classnames';
 import { useState , useEffect } from 'react';
 import './index.css';
@@ -13,11 +13,11 @@ const Home = () =>
    const [value ,setValue] = useState([]);//用于管理请求数据 
    const [activeTab, setActiveTab] = useState('Index');//用于管理Tabs切换
    const demoLongText = [
-    { key:1 , text:"爱自己这件事永远来的急" },
-    { key:2 , text:"我不需人陪 我自寻找浪漫" },
-    { key:3 , text:"我不该困在爱里 爱是无底洞 我永远自由" },
-    { key:4 , text:"你就做你自己 爱你的人自然爱你" },
-    { key:5 , text:"是花自然香 不必太张扬" }
+    { key:1 , text:"恭喜玩家啊信***在Yakuza Honor游戏中赢得290.0000USDT大奖。" },
+    { key:2 , text:"恭喜玩家宁静***在Yakuza Honor游戏中赢得790.0000USDT大奖。" },
+    { key:3 , text:"恭喜玩家李玉***在Yakuza Honor游戏中赢得1000.0000USDT大奖。" },
+    { key:4 , text:"恭喜玩家啊梁***在Yakuza Honor游戏中赢得1460.0000USDT大奖。" },
+    { key:5 , text:"恭喜玩家顺顺***在Yakuza Honor游戏中赢得200.0000USDT大奖。" }
     ]
    useEffect(() => {
      const fetchData = async () => {
@@ -152,7 +152,28 @@ const Home = () =>
          </div>
          {/* Tab 内容 */}
          <div className="Home-Tabs-Content">
-            {activeTab === 'Index' && <div>热门游戏</div>}
+            {activeTab === 'Index' &&
+               <Grid columns={3} gap={8}>
+                  <Grid.Item>
+                     <Image 
+                     width="100%"
+                     height="100%" 
+                     src="https://kk-hongkong-new.dbq9.com/master/h5/icon/H5-%E9%A6%99%E6%B8%AF%E5%85%AD%E5%90%88%E5%BD%A9@2.jpg"/>   
+                  </Grid.Item>
+                  <Grid.Item>
+                     <Image 
+                     width="100%"
+                     height="100%" 
+                     src="https://kk-hongkong-new.dbq9.com/master/h5/icon/%E5%8A%A0%E6%8B%BF%E5%A4%A72.8@2.png"/>   
+                  </Grid.Item>
+                  <Grid.Item>
+                     <Image 
+                     width="100%"
+                     height="100%" 
+                     src="https://kk-hongkong-new.dbq9.com/master/h5/icon/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%BD%91%E7%9B%98%E8%B5%94%E7%8E%87@2.png"/>   
+                  </Grid.Item>
+               </Grid>
+            }
             {activeTab === 'CaiPiao' && <div>彩票</div>}
             {activeTab === 'DianZi' && <div>电子</div>}
             {activeTab === 'TiYu' && <div>体育</div>}
