@@ -6,7 +6,7 @@ import Invitation from '../page/index/Invitation';
 import Wallet from '../page/index/Wallet';
 import CustomerService from '../page/index/CustomerService';
 import User from '../page/index/User';
-
+import Lhc from '../page/Cai/Lhc';
 const router = createBrowserRouter([
     {
       path:'/',
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
                 element: <User/>
             }    
         ]
-    }
+    },
+    {
+         path: 'Lhc',
+         element: <Lhc/>
+     }    
 ])
 export default router;

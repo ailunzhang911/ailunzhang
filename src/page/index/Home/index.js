@@ -1,10 +1,12 @@
 import { Button , Space , Image , Avatar , Skeleton , Swiper , NoticeBar , Grid} from 'antd-mobile';
+import { useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { useState , useEffect } from 'react';
 import './index.css';
 import { http } from '@/utils';
 const Home = () => 
 {
+   const Navigate = useNavigate();
    //判断登录
    const token = true;
    //余额
@@ -150,12 +152,15 @@ const Home = () =>
                <span>体育</span>               
             </div>                                            
          </div>
+         
+         
          {/* Tab 内容 */}
          <div className="Home-Tabs-Content">
             {activeTab === 'Index' &&
                <Grid columns={3} gap={8}>
                   <Grid.Item>
-                     <Image 
+                     <Image
+                     onClick={() => Navigate('/Lhc')}
                      width="100%"
                      height="100%" 
                      src="https://kk-hongkong-new.dbq9.com/master/h5/icon/H5-%E9%A6%99%E6%B8%AF%E5%85%AD%E5%90%88%E5%BD%A9@2.jpg"/>   

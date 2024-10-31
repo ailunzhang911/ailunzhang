@@ -1,5 +1,6 @@
-import { http } from './http';
+import { http , LhcApi } from './http';
 
 export { 
-    http
+    http,
+    LhcApi
 };
