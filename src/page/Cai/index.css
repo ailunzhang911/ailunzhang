@@ -34,16 +34,36 @@
   width: 100%;
   height: 50%;
   display: flex;
+}
+.Lhc-KaiJiangJu-MoKuai-XinXiLan-QiShu-DaoJiShi
+{
+  width: 30%;
+  display: flex;
   align-items: center;
-  justify-content: center;  
-  flex-direction: column;
+  /*justify-content: center;*/
+  flex-direction: column; 
+
+}
+.Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin
+{
+  width: 70%;  
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  Button{  
+     height: 80%;
+     margin-right:5%;
+     border-radius:15px;
+     background-color:#3E00FF;
+     color: #FFFFFF;
+  }
 }
 .Lhc-KaiJiangJu-MoKuai-HaoMa
 {
-  display: flex;
-  align-items: center;
   width: 100%;
   height: 50%;
+  display: flex;
+  align-items: center;  
 }
 .Lhc-KaiJiangJu-MoKuai-HaoMa-data
 {

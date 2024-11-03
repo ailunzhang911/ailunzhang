@@ -1,4 +1,4 @@
-import { NavBar } from 'antd-mobile';
+import { NavBar, Button } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classnames from 'classnames';
@@ -26,42 +26,44 @@ const Lhc = () => {
    // 用于存储期数
    const [QiShu, setQiShu] = useState('2024XXX');
 
+   // 定义一个函数用于获取数据
+   const fetchData = async () => {
+      setLoading(false); // 开始加载前先隐藏真实数据
+      try {
+         // 从 API 获取数据
+         const res = await LhcApi.get("/api/macaujc2.com");
+         if (Array.isArray(res) && res.length > 0) {
+            // 提取期数
+            const expect = res[0].expect;
+
+            // 分割 openCode, wave 和 zodiac 字符串为数组
+            const openCodeArray = res[0].openCode.split(',');
+            const waveArray = res[0].wave.split(',');
+            const zodiacArray = res[0].zodiac.split(',');
+
+            // 将 openCode, wave, 和 zodiac 组合成对象数组
+            const combinedData = openCodeArray.map((code, index) => ({
+               key: index,
+               openCode: code,
+               wave: waveArray[index],
+               zodiac: zodiacArray[index],
+            }));
+
+            setMacaujc(combinedData); // 更新开奖信息
+            setQiShu(expect); // 更新期数
+            setTimeout(() => {
+               setLoading(true); // 显示真实数据，隐藏骨架
+            }, 500); // 延迟0.5秒后显示数据
+         } else {
+            console.error("Unexpected response format");
+         }
+      } catch (error) {
+         console.error("Error fetching data:", error);
+      }
+   };
+
    // useEffect 钩子用于页面加载时获取数据
    useEffect(() => {
-      const fetchData = async () => {
-         try {
-            // 从 API 获取数据
-            const res = await LhcApi.get("/api/macaujc2.com");
-            if (Array.isArray(res) && res.length > 0) {
-               // 提取期数
-               const expect = res[0].expect;
-
-               // 分割 openCode, wave 和 zodiac 字符串为数组
-               const openCodeArray = res[0].openCode.split(',');
-               const waveArray = res[0].wave.split(',');
-               const zodiacArray = res[0].zodiac.split(',');
-
-               // 将 openCode, wave, 和 zodiac 组合成对象数组
-               const combinedData = openCodeArray.map((code, index) => ({
-                  key: index,
-                  openCode: code,
-                  wave: waveArray[index],
-                  zodiac: zodiacArray[index],
-               }));
-
-               setMacaujc(combinedData); // 更新开奖信息
-               setQiShu(expect); // 更新期数
-               setTimeout(() => {
-                  setLoading(true); // 显示真实数据，隐藏骨架
-               }, 500); // 延迟0.5秒后显示数据
-            } else {
-               console.error("Unexpected response format");
-            }
-         } catch (error) {
-            console.error("Error fetching data:", error);
-         }
-      };
-
       fetchData();
    }, []);
 
@@ -74,10 +76,17 @@ const Lhc = () => {
                   <div className="Lhc-KaiJiangJu-MoKuai">
                      {/* 期数和倒计时 */}
                      <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan">
-                        <span>{QiShu}期</span>
-                        <span>倒计时:04:09:9</span>
+                        <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan-QiShu-DaoJiShi">
+                           <span>{QiShu}期</span>
+                           <span>倒计时:04:09:9</span>                        
+                        </div>
+                        <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin">
+                           <Button size='small' fill="solid" onClick={fetchData}>
+                              刷新
+                           </Button>
+                        </div>
                      </div>
-                     
+                                          
                      {/* 判断 loading 状态来显示真实数据或骨架 */}
                      {loading ? (
                         <div className="Lhc-KaiJiangJu-MoKuai-HaoMa">
