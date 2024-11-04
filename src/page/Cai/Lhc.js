@@ -1,4 +1,4 @@
-import { NavBar, Button } from 'antd-mobile';
+import { NavBar, Button , Tabs } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classnames from 'classnames';
@@ -16,7 +16,11 @@ const Lhc = () => {
       { id: 6, text: '步' },
       { id: 7, text: '中' },
    ];
-
+   const handleTabChange = (key) =>
+   {       
+       setActiveTab(key)
+   }
+   const [activeTab, setActiveTab] = useState('fruits');//用于管理Tabs切换
    const [loading, setLoading] = useState(false); // 控制骨架的显示
    const Navigate = useNavigate(); // 导航 hook
 
@@ -81,7 +85,7 @@ const Lhc = () => {
                            <span>倒计时:04:09:9</span>                        
                         </div>
                         <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin">
-                           <Button size='small' fill="solid" onClick={fetchData}>
+                           <Button className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin-Button" size='small' fill="solid" onClick={fetchData}>
                               刷新
                            </Button>
                         </div>
@@ -114,7 +118,30 @@ const Lhc = () => {
                   </div>
                </div>
             </div>
-            <div className="Appss">                 
+            <div className="Lhc-MianBan">
+               <Tabs onChange={handleTabChange}>
+                  <Tabs.Tab 
+                     title='水果' 
+                     key='fruits'
+                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'fruits'})} 
+                  >
+                     菠萝
+                  </Tabs.Tab>
+                  <Tabs.Tab 
+                     title='蔬菜' 
+                     key='vegetables'
+                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'vegetables'})}               
+                  >
+                     西红柿
+                  </Tabs.Tab>
+                  <Tabs.Tab 
+                     title='动物' 
+                     key='animals'                    
+                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'animals'})} 
+                  >
+                     蚂蚁
+                  </Tabs.Tab>
+               </Tabs>
             </div>
          </div>
       </div>
