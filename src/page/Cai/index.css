@@ -130,17 +130,3 @@
    background-color: #3E00FF;   
    --active-title-color:var(--adm-color-white);
 }
-.adm-tabs {
-   text-decoration: none !important;
-    --title-font-size: var(
-  --adm-font-size-9);
-    --content-padding: 12px;
-    --active-line-height: 2px;
-    --active-line-border-radius: var(
-  --active-line-height);
-    --active-line-color: #3E00FF;
-    --active-title-color: var(
-  --adm-color-primary);
-    position: relative;
-    min-width: 0;
-}

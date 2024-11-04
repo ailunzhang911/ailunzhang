@@ -119,10 +119,10 @@ const Lhc = () => {
                </div>
             </div>
             <div className="Lhc-MianBan">
-               <Tabs onChange={handleTabChange}>
+               <Tabs style={{ '--active-line-height': '0px' }} onChange={handleTabChange}>
                   <Tabs.Tab 
                      title='水果' 
-                     key='fruits'
+                     key='fruits'                     
                      className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'fruits'})} 
                   >
                      菠萝
