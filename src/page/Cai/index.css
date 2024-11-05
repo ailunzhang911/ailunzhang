@@ -143,3 +143,20 @@
    background: linear-gradient(182.69deg,#8489ff -11.69%,#4d34e6 74.43%,#7059ff 107.71%);
    --active-title-color:var(--adm-color-white);   
 }
+.Lhc-MianBan-App
+{
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  height:400px;
+}
+.Lhc-MianBan-SideBar
+{
+  width:80px;
+  height:100%;
+  display: flex;
+  --background-color:#FFFFFF;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius:0px 15px 15px 0px;
+  font-size:17px;
+}

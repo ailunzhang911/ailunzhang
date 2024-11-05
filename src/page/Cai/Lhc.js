@@ -19,18 +19,19 @@ const Lhc = () => {
    const tabss =
    [
       {
-         key: 'key1',
+         key: 'Special Code',
          title: '特码',
       },
       {
-         key: 'key2',
+         key: 'Teshaw',
          title: '特肖',
       },
       {
-         key: 'key3',
+         key: 'Wave color',
          title: '波色',
       },
    ];
+   const [activeKey, setActiveKey] = useState('Special Code')
    const [activeTab, setActiveTab] = useState('Betting Area'); // 用于管理Tabs切换
    const [loading, setLoading] = useState(false); // 控制骨架的显示
    const Navigate = useNavigate(); // 导航 hook
@@ -145,12 +146,21 @@ const Lhc = () => {
                      key='Betting Area'
                      className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Betting Area' })}
                   >
-                     <SideBar>
-                        {tabss.map(item => (
-                           <SideBar.Item key={item.key} title={item.title} />
-                        ))}
-                     </SideBar>
-                  </Tabs.Tab>
+                     <div className="Lhc-MianBan-App">
+                        <SideBar
+                           className="Lhc-MianBan-SideBar"
+                           onChange={setActiveKey}
+                           activeKey={activeKey}
+                        >
+                           {tabss.map(item => (
+                              <SideBar.Item className="Lhc-MianBan-SideBar-title" key={item.key} title={item.title}/>                              
+                           ))}
+                        </SideBar>
+                        {activeKey === 'Special Code' && <div>特码</div>}
+                        {activeKey === 'Teshaw' && <div>特肖</div>}
+                        {activeKey === 'Wave color' && <div>波色</div>}                        
+                     </div>
+                  </Tabs.Tab>                  
                   <Tabs.Tab
                      title='游戏记录'
                      key='Game Record'
@@ -178,7 +188,7 @@ const Lhc = () => {
                      className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Award record' })}
                   >
                      开奖记录
-                  </Tabs.Tab>
+                  </Tabs.Tab>                 
                </Tabs>
             </div>
          </div>
@@ -187,4 +197,3 @@ const Lhc = () => {
 };
 
 export default Lhc;
-
