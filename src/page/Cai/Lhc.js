@@ -1,4 +1,4 @@
-import { NavBar, Button , Tabs } from 'antd-mobile';
+import { NavBar, Button, Tabs , SideBar} from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classnames from 'classnames';
@@ -16,19 +16,33 @@ const Lhc = () => {
       { id: 6, text: '步' },
       { id: 7, text: '中' },
    ];
-   const handleTabChange = (key) =>
-   {       
-       setActiveTab(key)
-   }
-   const [activeTab, setActiveTab] = useState('fruits');//用于管理Tabs切换
+   const tabss =
+   [
+      {
+         key: 'key1',
+         title: '特码',
+      },
+      {
+         key: 'key2',
+         title: '特肖',
+      },
+      {
+         key: 'key3',
+         title: '波色',
+      },
+   ];
+   const [activeTab, setActiveTab] = useState('Betting Area'); // 用于管理Tabs切换
    const [loading, setLoading] = useState(false); // 控制骨架的显示
    const Navigate = useNavigate(); // 导航 hook
 
    // 用于存储开奖信息的数据
    const [Macaujc, setMacaujc] = useState([]);
-
    // 用于存储期数
    const [QiShu, setQiShu] = useState('2024XXX');
+
+   const handleTabChange = (key) => {
+      setActiveTab(key);
+   };
 
    // 定义一个函数用于获取数据
    const fetchData = async () => {
@@ -82,15 +96,20 @@ const Lhc = () => {
                      <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan">
                         <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan-QiShu-DaoJiShi">
                            <span>{QiShu}期</span>
-                           <span>倒计时:04:09:9</span>                        
+                           <span>倒计时:04:09:9</span>
                         </div>
                         <div className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin">
-                           <Button className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin-Button" size='small' fill="solid" onClick={fetchData}>
+                           <Button
+                              className="Lhc-KaiJiangJu-MoKuai-XinXiLan-ShuaXin-Button"
+                              size='small'
+                              fill="solid"
+                              onClick={fetchData}
+                           >
                               刷新
                            </Button>
                         </div>
                      </div>
-                                          
+
                      {/* 判断 loading 状态来显示真实数据或骨架 */}
                      {loading ? (
                         <div className="Lhc-KaiJiangJu-MoKuai-HaoMa">
@@ -118,28 +137,47 @@ const Lhc = () => {
                   </div>
                </div>
             </div>
+
             <div className="Lhc-MianBan">
                <Tabs style={{ '--active-line-height': '0px' }} onChange={handleTabChange}>
-                  <Tabs.Tab 
-                     title='水果' 
-                     key='fruits'                     
-                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'fruits'})} 
+                  <Tabs.Tab
+                     title='投注区'
+                     key='Betting Area'
+                     className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Betting Area' })}
                   >
-                     菠萝
+                     <SideBar>
+                        {tabss.map(item => (
+                           <SideBar.Item key={item.key} title={item.title} />
+                        ))}
+                     </SideBar>
                   </Tabs.Tab>
-                  <Tabs.Tab 
-                     title='蔬菜' 
-                     key='vegetables'
-                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'vegetables'})}               
+                  <Tabs.Tab
+                     title='游戏记录'
+                     key='Game Record'
+                     className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Game Record' })}
                   >
-                     西红柿
+                     游戏记录
                   </Tabs.Tab>
-                  <Tabs.Tab 
-                     title='动物' 
-                     key='animals'                    
-                     className={classnames('Lhc-MianBan-Tabs', {'Lhc-MianBan-Tabs-Active': activeTab === 'animals'})} 
+                  <Tabs.Tab
+                     title='游戏规则'
+                     key='Rules of the game'
+                     className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Rules of the game' })}
                   >
-                     蚂蚁
+                     游戏规则
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                     title='开奖验证'
+                     key='Prize-opening verification'
+                     className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Prize-opening verification' })}
+                  >
+                     开奖验证
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                     title='开奖记录'
+                     key='Award record'
+                     className={classnames('Lhc-MianBan-Tabs', { 'Lhc-MianBan-Tabs-Active': activeTab === 'Award record' })}
+                  >
+                     开奖记录
                   </Tabs.Tab>
                </Tabs>
             </div>
@@ -149,3 +187,4 @@ const Lhc = () => {
 };
 
 export default Lhc;
+

@@ -120,13 +120,26 @@
 {
   width: 100%;
 }
+.adm-tabs-content {
+   padding: 0px;
+}
 .Lhc-MianBan-Tabs {
-   border-radius: 10px;
-   color: #000000 !important; /* 默认黑色 */
+   margin: 15px 5px;
+   height:30px; 
+   display: flex;
+   font-size:10px;
+   align-items: center;
+   border-radius: 10px;   
+   background: linear-gradient(160.16deg,#FFFFFF -.56%,#e5eeff 98.05%);
+   box-shadow: 0 .02rem .04rem #717dbe80,0 .02rem #a4a9d8;
+   color: #000000 !important;
+   .adm-tabs-tab {
+      font-size: 13px;
+   }
 }
 
 .Lhc-MianBan-Tabs-Active {
    border-radius: 10px;
-   background-color: #3E00FF;   
-   --active-title-color:var(--adm-color-white);
+   background: linear-gradient(182.69deg,#8489ff -11.69%,#4d34e6 74.43%,#7059ff 107.71%);
+   --active-title-color:var(--adm-color-white);   
 }
