@@ -1,4 +1,4 @@
-import { NavBar, Button, Tabs , SideBar} from 'antd-mobile';
+import { NavBar, Button, Tabs , SideBar , Selector } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classnames from 'classnames';
@@ -7,6 +7,8 @@ import './index.css';
 
 const Lhc = () => {
    // 定义一个静态的数组 Huise 用于显示骨架占位符内容
+   
+   
    const Huise = [
       { id: 1, text: '开' },
       { id: 2, text: '奖' },
@@ -31,6 +33,11 @@ const Lhc = () => {
          title: '波色',
       },
    ];
+   const options = Array.from({ length: 49 }, (_, index) => ({
+      label: (index + 1).toString(),
+      description: '48.5',
+      value: (index + 1).toString(),      
+   }));
    const [activeKey, setActiveKey] = useState('Special Code')
    const [activeTab, setActiveTab] = useState('Betting Area'); // 用于管理Tabs切换
    const [loading, setLoading] = useState(false); // 控制骨架的显示
@@ -44,7 +51,6 @@ const Lhc = () => {
    const handleTabChange = (key) => {
       setActiveTab(key);
    };
-
    // 定义一个函数用于获取数据
    const fetchData = async () => {
       setLoading(false); // 开始加载前先隐藏真实数据
@@ -156,7 +162,24 @@ const Lhc = () => {
                               <SideBar.Item className="Lhc-MianBan-SideBar-title" key={item.key} title={item.title}/>                              
                            ))}
                         </SideBar>
-                        {activeKey === 'Special Code' && <div>特码</div>}
+                        {activeKey === 'Special Code' &&                         
+                           <div className="Lhc-MianBan-HaoMa">
+                              <Selector
+                                 className="Lhc-MianBan-HaoMa-Selector"
+                                 style={{
+                                    '--border-radius': '10px',
+                                    '--padding': '0px',
+                                    '--gap':'10px',
+                                    //--color加{}做一个判断什么号码什么颜色
+                                    '--color':'#FFFFFF'
+                                 }}
+                                 multiple
+                                 showCheckMark={false}
+                                 options={options}                                 
+                                 columns={4}
+                              />
+                           </div>                      
+                        }
                         {activeKey === 'Teshaw' && <div>特肖</div>}
                         {activeKey === 'Wave color' && <div>波色</div>}                        
                      </div>
