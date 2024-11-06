@@ -1,4 +1,4 @@
-import { NavBar, Button, Tabs , SideBar , Selector } from 'antd-mobile';
+import { NavBar, Button, Tabs , SideBar } from 'antd-mobile';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import classnames from 'classnames';
@@ -33,11 +33,33 @@ const Lhc = () => {
          title: '波色',
       },
    ];
+   
+   const red = [ 1 , 2 , 7 , 8 , 12 , 13 , 18 , 19 , 23 , 24 , 29 , 30 , 34 , 35 , 40 , 45 , 46 ]
+   const blue = [ 4 , 3 , 9 , 10 , 14 , 15 , 20 , 25 , 26 , 31 , 36 , 37 , 41 , 42 , 47 , 48 ]
+   const green = [ 5 , 6 , 11 , 16 , 17 , 21 , 22 , 27 , 28 , 32 , 33 , 38 , 39 , 43 , 44 , 49 ]
+   const redSet = new Set(red);
+   const blueSet = new Set(blue);
+   const greenSet = new Set(green);
+   const getColorClass = (number) => {
+      switch (true) {
+         case redSet.has(number):
+            return 'red-bg';
+         case blueSet.has(number):
+            return 'blue-bg';
+         case greenSet.has(number):
+            return 'green-bg';
+         default:
+            return '';
+      }
+   };
    const options = Array.from({ length: 49 }, (_, index) => ({
-      label: (index + 1).toString(),
-      description: '48.5',
-      value: (index + 1).toString(),      
+       label: index + 1,
+       //description后期需要对接后端
+       description: '48.5',
+       value: index + 1,
    }));
+   
+   
    const [activeKey, setActiveKey] = useState('Special Code')
    const [activeTab, setActiveTab] = useState('Betting Area'); // 用于管理Tabs切换
    const [loading, setLoading] = useState(false); // 控制骨架的显示
@@ -85,8 +107,7 @@ const Lhc = () => {
       } catch (error) {
          console.error("Error fetching data:", error);
       }
-   };
-
+   };   
    // useEffect 钩子用于页面加载时获取数据
    useEffect(() => {
       fetchData();
@@ -159,25 +180,16 @@ const Lhc = () => {
                            activeKey={activeKey}
                         >
                            {tabss.map(item => (
-                              <SideBar.Item className="Lhc-MianBan-SideBar-title" key={item.key} title={item.title}/>                              
+                              <SideBar.Item className="Lhc-MianBan-SideBar-title" key={item.key} title={item.title}/>
                            ))}
                         </SideBar>
                         {activeKey === 'Special Code' &&                         
                            <div className="Lhc-MianBan-HaoMa">
-                              <Selector
-                                 className="Lhc-MianBan-HaoMa-Selector"
-                                 style={{
-                                    '--border-radius': '10px',
-                                    '--padding': '0px',
-                                    '--gap':'10px',
-                                    //--color加{}做一个判断什么号码什么颜色
-                                    '--color':'#FFFFFF'
-                                 }}
-                                 multiple
-                                 showCheckMark={false}
-                                 options={options}                                 
-                                 columns={4}
-                              />
+                              {options.map(item => {
+                                 return <div className={classnames("Lhc-MianBan-HaoMa-Selector", getColorClass(item.label))} key={item.value}>{item.label}
+                                   <span className="Lhc-MianBan-HaoMa-Selector-span">{item.description}</span>
+                                 </div>
+                              })}
                            </div>                      
                         }
                         {activeKey === 'Teshaw' && <div>特肖</div>}
