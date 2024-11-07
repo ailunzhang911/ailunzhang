@@ -162,15 +162,14 @@
 }
 .Lhc-MianBan-HaoMa
 {
-  margin: 0px 10px;
+  margin: 0px 10px;  
   width:100%;
-  height:100%;
+  height:100%;  
   overflow: auto;
 }
-
 .Lhc-MianBan-HaoMa-Selector
 {
-  margin: 5px;
+  margin: 5px 5px;  
   width:20%;
   height:10%;
   float: left;
@@ -180,13 +179,6 @@
   flex-direction: column; 
   background-color:#FFFFFF;
   border-radius:10px;
-  /*overflow: auto;*/
-}
-
-.Lhc-MianBan-HaoMa-Selector-span
-{
-  font-size:10px;
-  color:#000000;
 }
 
 .red-bg { 
