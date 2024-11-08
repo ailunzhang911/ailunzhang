@@ -31,7 +31,7 @@ const Lhc = () => {
       title: "波色",
     },
   ];
-
+  
   const [activeKey, setActiveKey] = useState("Special Code");
   const [activeTab, setActiveTab] = useState("Betting Area"); // 用于管理Tabs切换
   const [loading, setLoading] = useState(false); // 控制骨架的显示
@@ -41,9 +41,12 @@ const Lhc = () => {
   const [Macaujc, setMacaujc] = useState([]);
   // 用于存储期数
   const [QiShu, setQiShu] = useState("2024XXX");
-
+  /*
   const handleTabChange = (key) => {
     setActiveTab(key);
+  };*/
+  const handleTabChange = (key) => {
+     setActiveTab(key);     
   };
   // 定义一个函数用于获取数据
   const fetchData = async () => {
@@ -87,6 +90,8 @@ const Lhc = () => {
 
   //号码选项
   const [selectedNumbers, setSelectedNumbers] = useState([]);
+  const [betCount, setBetCount] = useState(0); // 新增的状态用于统计选中的注数
+  
   const colors = ["red", "blue", "green"];
 
   // 数字 1 到 49，并附带描述
@@ -120,15 +125,18 @@ const Lhc = () => {
   };
 
   // 点击数字时切换选中状态
-  const handleClick = (number) => {
+  const handleClick = (number) => {        
     setSelectedNumbers(
       (prev) =>
         prev.includes(number)
           ? prev.filter((n) => n !== number) // 如果已选中，则移除
-          : [...prev, number] // 否则，添加到已选数字中
+          : [...prev, number] // 否则，添加到已选数字中      
+    );
+    setBetCount((prevCount) =>
+      selectedNumbers.includes(number) ? prevCount - 1 : prevCount + 1
     );
   };
-
+  
   return (
     <div>
       <div className="Lhc-index">
@@ -291,6 +299,7 @@ const Lhc = () => {
               开奖记录
             </Tabs.Tab>
           </Tabs>
+          已选注数: {betCount} 注
         </div>
       </div>
     </div>
