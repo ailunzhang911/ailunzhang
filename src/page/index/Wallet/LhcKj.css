@@ -1,0 +1,14 @@
+div
+{
+  width: 100%;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Lhc-KaiJiangJu
+{
+  width: 80%;
+  height: 20%;
+  background-color:#FF0000;
+}

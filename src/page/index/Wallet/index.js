@@ -1,11 +1,10 @@
 
-import './index.css';
-function Wallet() {
+const Wallet = () => {
+  
   return (
     <div>
-
     </div>
   );
-}
+};
 
 export default Wallet;

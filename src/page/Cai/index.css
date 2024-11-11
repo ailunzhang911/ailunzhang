@@ -1,7 +1,7 @@
 .Lhc-index
 {
   width: 100%;
-  height: 125px;
+  height: 100px;
   background-color:#3E00FF;
   border-radius: 0 0 50px 50px;
 }
@@ -11,20 +11,17 @@
 }
 .Lhc-BanYuan
 {
-   
+  position: absolute; top: 50px; left: 0; bottom: 0px; right: 0px;
 }
 .Lhc-KaiJiangJu
-{
-  margin-top: 30px;
+{    
   display: flex;
   justify-content: center; 
-  width: 100%;
-  height: 80%;
 }
 .Lhc-KaiJiangJu-MoKuai
 {
   width: 80%;
-  height: 50%;
+  height: 50%;    
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color:#FFFFFF;
   border-radius:20px;
@@ -116,15 +113,22 @@
   align-items: center;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAMAAAAPzWOAAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABvUExURUdwTKWlpbGxsb+/v7q6upycnJycnJubm5ubm5ubm8nJybq6usPDw7GxsdjY2JmZme7u7v///6KioqioqJ6enq+vr6WlpaysrLOzs7u7u7+/v7e3t2dnZ8XFxc/Pz+Hh4dnZ2ezs7Pn5+ejo6Ht7e/TuDF8AAAAPdFJOUwBg5Z/HQY/i+L9BC34NDRybwQkAAARlSURBVFjDlZgLd7IwDIadc4rOfQV74baWIv7/3/gl6QWQ4jDb2fFMeXzzNqQNu91qXD4PpyxjEFl2Oh+/du/Gv+tesafITsefNxAfBwEX3WquOC8hOFc3QaDTx0bEdQ+flqYvcillJUOUnECbMBdACJ0XEAYQFf5CeA5h/nLnGxIR5o6IIq/mQZjyBpjz90sZnLHGIYpCt9MInLIENdkLMVfB1OARha3g0rpu3Q9iWo/BdbuuMT7BzyCj6PDaSXhQFaz5TDMOkEoRdRChqRsfxHFZecphhWFGBiF8aI9pamcNGqOTFMilC4hce4TWBkJrPaqpXUZDl8joOuq4W0IY2/V5jM4aTRifkS3Mwt2LCH44hOnyZQzGWwMQ+MaGicusxjiTRBgMGNrYIU/HYDX5W1X4lZLx75mpij5RQW3Ups9Xo8+Nywhr4a6m5n4xBncr3G3AaLr8dXQNScFVGKYJnZiAe54Yr2QENaYGiMb0G7aP7YMxxZ0QnW+IXiMFa/su4gqhkJKENH2+iQIZVVQRJkgZhTRDvi2GZpTyMXUEIF2+NbogRbsF+oFu6mzV+faAaiApORP/AHLEbAiSFGJ1svaGyi+QJGtjNgkhfftLUS4xBgrORmszzIYDJCHk8evj8bxsfQd3UAX9vGeKqlUhQ7ZLBofLWSURdVu8WcNtWIMtN3YBS4SzZJFN38HFNb5i8CJhLbQVoNTQV84eIu3yY5CGMxcgi2Qt9ckGTDmgrw6y9K6EZCLELtcHIbyx4GwWIMuKt8bY6M3iO3oHUSXjuDgKV6dKtw/y5hEkzaJFiFKC3XZQr1Sw9XqJ4+qY5f9rKTmeFxhDCCopmzWGRUbqjtASDx03D0HKqpIBGA+TeqdGiPIQgZCyWoHIdC7kSTj94OoQRK70Iyg0kX6nIl8BkjkIUtINqYds0nYNPhuEQLGRKaVNfx+09nSvsi4bgJyw7CkfvtaS7EqeOh4Iz9iTnJRqbXEeK74GIeyIrcBJKZOq699ktUIJllRpAiBw9iIIUpL56GQvoWycEFxhbI9BSnJ91IMlTwgyCjm5Ru2lpJey71POah6FHN2WITzljX0nMADyswv5CLyX237rDtjSrSdCNrSNxoQ27sX1mIzfRqMUtV5x82jGlfFCghRP2XA+AVNVMIR9jIecSFHtnyelFsYgvHtnQmgDCxQ4ZJiXDFNOdbDJpHCOFMRUq2euwVQo4xYZ5+kRNPMUJ4aXOpVUp6lMnQxiZLPBhxLyFMJwCQfifrKlmgYJhIgM9jT2HNkCgz2zxSM+bN28dIQZggp+FueR4jCOgyj6q5wIQnjGeTlmOMqthsFg6HEekIqCBDgNM0SKQRSZF5PIbQOXuquJMMlkhfE0voXJh0+uh0k1juvnTYNkmH60CDGd+Y8bR9oQA58o8Dq+tg7Xo5jq6dHD6+F6PuaPFDlFnL7eeeCQpGx+bhEefRjY/XDCghHnXcTaQxj23kOY+DhozxWureL7w6vHQf8BCpMNXyBuRmwAAAAASUVORK5CYII=") 0% center / 100% 100%;
 }
+
+
+
+
+
 .Lhc-MianBan
 {
+  margin-top: 60px;
   width: 100%;
+  height:650px;
 }
 .adm-tabs-content {
    padding: 0px;
 }
 .Lhc-MianBan-Tabs {
-   margin: 15px 5px;
+   margin: 5px 5px;
    height:30px; 
    display: flex;
    font-size:10px;
@@ -146,9 +150,9 @@
 .Lhc-MianBan-App
 {
   margin-top: 10px;
-  display: flex;
   width: 100%;
-  height:445px;
+  height:450px;
+  display: flex;
 }
 .Lhc-MianBan-SideBar
 {
