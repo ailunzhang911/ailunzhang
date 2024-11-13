@@ -11,11 +11,12 @@
 }
 .Lhc-BanYuan
 {
-  position: absolute; top: 50px; left: 0; bottom: 0px; right: 0px;
+  position: relative;  
 }
 .Lhc-KaiJiangJu
 {    
   display: flex;
+  position: absolute; top: -50px; left: 0; bottom: ; right: 0px;
   justify-content: center; 
 }
 .Lhc-KaiJiangJu-MoKuai
@@ -114,10 +115,6 @@
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABECAMAAAAPzWOAAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABvUExURUdwTKWlpbGxsb+/v7q6upycnJycnJubm5ubm5ubm8nJybq6usPDw7GxsdjY2JmZme7u7v///6KioqioqJ6enq+vr6WlpaysrLOzs7u7u7+/v7e3t2dnZ8XFxc/Pz+Hh4dnZ2ezs7Pn5+ejo6Ht7e/TuDF8AAAAPdFJOUwBg5Z/HQY/i+L9BC34NDRybwQkAAARlSURBVFjDlZgLd7IwDIadc4rOfQV74baWIv7/3/gl6QWQ4jDb2fFMeXzzNqQNu91qXD4PpyxjEFl2Oh+/du/Gv+tesafITsefNxAfBwEX3WquOC8hOFc3QaDTx0bEdQ+flqYvcillJUOUnECbMBdACJ0XEAYQFf5CeA5h/nLnGxIR5o6IIq/mQZjyBpjz90sZnLHGIYpCt9MInLIENdkLMVfB1OARha3g0rpu3Q9iWo/BdbuuMT7BzyCj6PDaSXhQFaz5TDMOkEoRdRChqRsfxHFZecphhWFGBiF8aI9pamcNGqOTFMilC4hce4TWBkJrPaqpXUZDl8joOuq4W0IY2/V5jM4aTRifkS3Mwt2LCH44hOnyZQzGWwMQ+MaGicusxjiTRBgMGNrYIU/HYDX5W1X4lZLx75mpij5RQW3Ups9Xo8+Nywhr4a6m5n4xBncr3G3AaLr8dXQNScFVGKYJnZiAe54Yr2QENaYGiMb0G7aP7YMxxZ0QnW+IXiMFa/su4gqhkJKENH2+iQIZVVQRJkgZhTRDvi2GZpTyMXUEIF2+NbogRbsF+oFu6mzV+faAaiApORP/AHLEbAiSFGJ1svaGyi+QJGtjNgkhfftLUS4xBgrORmszzIYDJCHk8evj8bxsfQd3UAX9vGeKqlUhQ7ZLBofLWSURdVu8WcNtWIMtN3YBS4SzZJFN38HFNb5i8CJhLbQVoNTQV84eIu3yY5CGMxcgi2Qt9ckGTDmgrw6y9K6EZCLELtcHIbyx4GwWIMuKt8bY6M3iO3oHUSXjuDgKV6dKtw/y5hEkzaJFiFKC3XZQr1Sw9XqJ4+qY5f9rKTmeFxhDCCopmzWGRUbqjtASDx03D0HKqpIBGA+TeqdGiPIQgZCyWoHIdC7kSTj94OoQRK70Iyg0kX6nIl8BkjkIUtINqYds0nYNPhuEQLGRKaVNfx+09nSvsi4bgJyw7CkfvtaS7EqeOh4Iz9iTnJRqbXEeK74GIeyIrcBJKZOq699ktUIJllRpAiBw9iIIUpL56GQvoWycEFxhbI9BSnJ91IMlTwgyCjm5Ru2lpJey71POah6FHN2WITzljX0nMADyswv5CLyX237rDtjSrSdCNrSNxoQ27sX1mIzfRqMUtV5x82jGlfFCghRP2XA+AVNVMIR9jIecSFHtnyelFsYgvHtnQmgDCxQ4ZJiXDFNOdbDJpHCOFMRUq2euwVQo4xYZ5+kRNPMUJ4aXOpVUp6lMnQxiZLPBhxLyFMJwCQfifrKlmgYJhIgM9jT2HNkCgz2zxSM+bN28dIQZggp+FueR4jCOgyj6q5wIQnjGeTlmOMqthsFg6HEekIqCBDgNM0SKQRSZF5PIbQOXuquJMMlkhfE0voXJh0+uh0k1juvnTYNkmH60CDGd+Y8bR9oQA58o8Dq+tg7Xo5jq6dHD6+F6PuaPFDlFnL7eeeCQpGx+bhEefRjY/XDCghHnXcTaQxj23kOY+DhozxWureL7w6vHQf8BCpMNXyBuRmwAAAAASUVORK5CYII=") 0% center / 100% 100%;
 }
 
-
-
-
-
 .Lhc-MianBan
 {
   margin-top: 60px;
@@ -166,14 +163,14 @@
 }
 .Lhc-MianBan-HaoMa
 {
-  margin: 0px 10px;  
+  margin: 0px 0px 0px 20px;  
   width:100%;
   height:100%;  
-  overflow: auto;
+  overflow: auto;  
 }
 .Lhc-MianBan-HaoMa-Selector
 {
-  margin: 5px 5px;  
+  margin: 5px 5px;
   width:20%;
   height:10%;
   float: left;
@@ -196,4 +193,61 @@
 .green-bg { 
   border: 1px solid green; 
   color:green;
+}
+
+
+.Lhc-MianBan-ActiveBet
+{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:140px; 
+}
+.Lhc-MianBan-ActiveBet-1
+{
+  width:100%;  
+  height:50%; 
+  display: flex;
+  align-items: center;
+}
+.Lhc-MianBan-ActiveBet-1-Button
+{
+  width: 15%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .01rem solid #74739c;
+  border-radius: .5rem;
+  margin: .2.5rem;
+  box-sizing: border-box;
+}
+.Lhc-MianBan-ActiveBet-1-Button-img
+{
+  width: 25px;
+  height: 25px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJ6SURBVHgB1VdRjtMwEJ1xUgnRIuUIvQHLCUhPQG+wVGX5XVCKtH/b/lVqyeafhZYTUE7Q7A3KDXIDKtr9obXNjJNA1V3RdJ0g8aQm9jjVe56xx2OEDL3eBx9RNMES9bqY9fudZdHv3YuLSVNu5Ret4UTTwxbr9dajV7Rr6/cn3vqHOgfUvkBcPG6IQS7SlRt1SbQn5kuEBT0Lq98Halg6W3e2a+MJ3q7UnAab3Fda+7cr2SZ7azjsJNgLrr+T3UONnVHYnUKJMN7dqLkGQ75EgW9BwSX3ESCpP3GeCSbnj7VQCZSIO+RStUaj7tSRooWACXmdPXMloALskVNkKTSPaia0w6iTaFQdbtN4u3QBd2aezVZu5JzHjCAtTs0bIXGhRNzndgdqS+mkNhbxLvgYU/tlKgQGpQm4N+bR64UZezNp5SIgI1e06Mdhd1ZKCP5GzuC4E/HvPpOH2Y6zFnCInEFun9A6aO+TWwsoTv7H7eFernnwGrAhT/8rryj13zxIgO3MpVS+CQmid3QIynD7Lo4SUDb5UQKqID9KQBXkhQVwtZQfLARPOe7TMsgLC9AaTRLhgyV9q2kQfDq1JS8sgE6t50YIH6OoB7kIKmbmNuSFBJgjVJuSbTken8WNhhvR+Z6XXb4NOeNgIpI/lc8VBRcVPOP1SrIYLx+3IS8kAHL3U1EB6Y9tMVluqBWH71/FYIGDArRW3+i+kFDrKwhc1DdU90fF635rAePwjGv8CCpCJUXpfyfAxBOV/b2wMFS6sA1vEFzzvj7P+jFUDEpqnk7zCvBtzJXS6dcc9SLL9T5UjJ3772e+CmLeI0+0hUAP/gFoayecVbn9C1xSAnz8dCFlAAAAAElFTkSuQmCC") 0% center / 100% 100%;
+}
+
+
+.Lhc-MianBan-ActiveBet-1-Chips
+{
+  margin: 0px 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#FFFFFF;
+  font-size: 13px;
+  background: url("https://i.ibb.co/c6LSWyg/coin2.png") 0% center / 100% 100%;
+}
+
+
+
+.Lhc-MianBan-ActiveBet-2
+{
+  width:100%;  
+  height:70%; 
+  background-color:#3500FF;
 }

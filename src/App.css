@@ -1,8 +1,6 @@
 .App-index
 {
-  margin: 10px;
-  margin-top: 0px;
-  margin-bottom:0px;
+  margin: 0px 10px;
 }
 .App-TabBar
 {
@@ -12,10 +10,12 @@
   flex-direction: column;
   position:fixed;
   bottom:0;
-  box-shadow: 18px 18px 36px #B3B3B3, -18px -18px 36px #F2F4FD;
+  box-shadow: 10px 10px 36px #B3B3B3, -10px -10px 36px #F2F4FD;
   height:50px;
   /*margin-bottom: 15px;*/
   border-radius: 50px;
+  max-width: 450px;     /* 最大宽度为视口宽度 */
+  max-height: 860px;    /* 最大高度为视口高度 */
   .adm-tab-bar-item-active {
     color: #0014FF;
   }

@@ -1,3 +1,7 @@
+#root {
+  max-width: 450px;     /* 最大宽度为视口宽度 */
+  max-height: 860px;    /* 最大高度为视口高度 */
+}
 body {
   margin: 0px;
   padding: 0px;
@@ -8,11 +12,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color:#F2F4FD;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 
 @tailwind base;
 @tailwind components;
