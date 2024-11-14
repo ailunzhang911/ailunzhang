@@ -1,4 +1,4 @@
-import { NavBar, Button , Tabs, SideBar , Image } from "antd-mobile";
+import { NavBar, Button , Tabs, SideBar , Input , Image } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import classnames from "classnames";
@@ -19,7 +19,14 @@ const Lhc = () => {
     { id: 6, text: "步" },
     { id: 7, text: "中" },
   ];
-
+  const Chips = [
+    { id: 1, text: "10" },
+    { id: 2, text: "20" },
+    { id: 3, text: "30" },
+    { id: 4, text: "50" },
+    { id: 5, text: "100" }
+  ];
+  
   // 控制骨架的显示
   const [loading, setLoading] = useState(false);
 
@@ -307,31 +314,25 @@ const Lhc = () => {
           <div className="Lhc-MianBan-ActiveBet">
             <div className="Lhc-MianBan-ActiveBet-1">
               <div className="Lhc-MianBan-ActiveBet-1-Button">
-                <div className="Lhc-MianBan-ActiveBet-1-Button-img">
-                </div>
+                <Image                     
+                  width="25px"
+                  height="25px" 
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJ6SURBVHgB1VdRjtMwEJ1xUgnRIuUIvQHLCUhPQG+wVGX5XVCKtH/b/lVqyeafhZYTUE7Q7A3KDXIDKtr9obXNjJNA1V3RdJ0g8aQm9jjVe56xx2OEDL3eBx9RNMES9bqY9fudZdHv3YuLSVNu5Ret4UTTwxbr9dajV7Rr6/cn3vqHOgfUvkBcPG6IQS7SlRt1SbQn5kuEBT0Lq98Halg6W3e2a+MJ3q7UnAab3Fda+7cr2SZ7azjsJNgLrr+T3UONnVHYnUKJMN7dqLkGQ75EgW9BwSX3ESCpP3GeCSbnj7VQCZSIO+RStUaj7tSRooWACXmdPXMloALskVNkKTSPaia0w6iTaFQdbtN4u3QBd2aezVZu5JzHjCAtTs0bIXGhRNzndgdqS+mkNhbxLvgYU/tlKgQGpQm4N+bR64UZezNp5SIgI1e06Mdhd1ZKCP5GzuC4E/HvPpOH2Y6zFnCInEFun9A6aO+TWwsoTv7H7eFernnwGrAhT/8rryj13zxIgO3MpVS+CQmid3QIynD7Lo4SUDb5UQKqID9KQBXkhQVwtZQfLARPOe7TMsgLC9AaTRLhgyV9q2kQfDq1JS8sgE6t50YIH6OoB7kIKmbmNuSFBJgjVJuSbTken8WNhhvR+Z6XXb4NOeNgIpI/lc8VBRcVPOP1SrIYLx+3IS8kAHL3U1EB6Y9tMVluqBWH71/FYIGDArRW3+i+kFDrKwhc1DdU90fF635rAePwjGv8CCpCJUXpfyfAxBOV/b2wMFS6sA1vEFzzvj7P+jFUDEpqnk7zCvBtzJXS6dcc9SLL9T5UjJ3772e+CmLeI0+0hUAP/gFoayecVbn9C1xSAnz8dCFlAAAAAElFTkSuQmCC" />   
               </div>
               <div className="Lhc-MianBan-ActiveBet-1-Chips">
-                <span>10</span>
+                {Chips.map((item)=>(
+                  <div key={item.id} className="Lhc-MianBan-ActiveBet-1-Chips-img">
+                    <span key={item.id}>{item.text}</span>
+                  </div>
+                ))}
               </div>
-              <div className="Lhc-MianBan-ActiveBet-1-Chips">
-                <span>20</span>
-              </div>
-              <div className="Lhc-MianBan-ActiveBet-1-Chips">
-                <span>30</span>
-              </div>
-              <div className="Lhc-MianBan-ActiveBet-1-Chips">
-                <span>50</span>
-              </div>
-              <div className="Lhc-MianBan-ActiveBet-1-Chips">
-                <span>100</span>
+              <div className="Lhc-MianBan-ActiveBet-1-Input-box">
+                <Input className="Lhc-MianBan-ActiveBet-1-Input" placeholder="输入金额" />
               </div>
             </div>
-            <div className="Lhc-MianBan-ActiveBet-2">              
+            <div className="Lhc-MianBan-ActiveBet-2">
+              <span>{betCount}</span>       
             </div>
-            {/*
-            <p>已选注数: {betCount} 注</p>
-            <p>已选号码: {selectedNumbers.join(".")}</p>
-            */}
           </div>
         )}
       </div>

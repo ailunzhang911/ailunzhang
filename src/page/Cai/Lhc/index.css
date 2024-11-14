@@ -201,19 +201,24 @@
   position:fixed;
   bottom:0;
   width:100%;
+  max-width: 450px;
   height:140px; 
+  background-color:#FFFFFF;
+  border-radius: 10px;
 }
 .Lhc-MianBan-ActiveBet-1
 {
   width:100%;  
-  height:50%; 
+  height:40%; 
   display: flex;
   align-items: center;
+  
 }
 .Lhc-MianBan-ActiveBet-1-Button
 {
+  margin: 0px 5px;
   width: 15%;
-  height: 50%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,15 +227,15 @@
   margin: .2.5rem;
   box-sizing: border-box;
 }
-.Lhc-MianBan-ActiveBet-1-Button-img
-{
-  width: 25px;
-  height: 25px;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJ6SURBVHgB1VdRjtMwEJ1xUgnRIuUIvQHLCUhPQG+wVGX5XVCKtH/b/lVqyeafhZYTUE7Q7A3KDXIDKtr9obXNjJNA1V3RdJ0g8aQm9jjVe56xx2OEDL3eBx9RNMES9bqY9fudZdHv3YuLSVNu5Ret4UTTwxbr9dajV7Rr6/cn3vqHOgfUvkBcPG6IQS7SlRt1SbQn5kuEBT0Lq98Halg6W3e2a+MJ3q7UnAab3Fda+7cr2SZ7azjsJNgLrr+T3UONnVHYnUKJMN7dqLkGQ75EgW9BwSX3ESCpP3GeCSbnj7VQCZSIO+RStUaj7tSRooWACXmdPXMloALskVNkKTSPaia0w6iTaFQdbtN4u3QBd2aezVZu5JzHjCAtTs0bIXGhRNzndgdqS+mkNhbxLvgYU/tlKgQGpQm4N+bR64UZezNp5SIgI1e06Mdhd1ZKCP5GzuC4E/HvPpOH2Y6zFnCInEFun9A6aO+TWwsoTv7H7eFernnwGrAhT/8rryj13zxIgO3MpVS+CQmid3QIynD7Lo4SUDb5UQKqID9KQBXkhQVwtZQfLARPOe7TMsgLC9AaTRLhgyV9q2kQfDq1JS8sgE6t50YIH6OoB7kIKmbmNuSFBJgjVJuSbTken8WNhhvR+Z6XXb4NOeNgIpI/lc8VBRcVPOP1SrIYLx+3IS8kAHL3U1EB6Y9tMVluqBWH71/FYIGDArRW3+i+kFDrKwhc1DdU90fF635rAePwjGv8CCpCJUXpfyfAxBOV/b2wMFS6sA1vEFzzvj7P+jFUDEpqnk7zCvBtzJXS6dcc9SLL9T5UjJ3772e+CmLeI0+0hUAP/gFoayecVbn9C1xSAnz8dCFlAAAAAElFTkSuQmCC") 0% center / 100% 100%;
-}
-
-
 .Lhc-MianBan-ActiveBet-1-Chips
+{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Lhc-MianBan-ActiveBet-1-Chips-img
 {
   margin: 0px 5px;
   width: 40px;
@@ -242,12 +247,30 @@
   font-size: 13px;
   background: url("https://i.ibb.co/c6LSWyg/coin2.png") 0% center / 100% 100%;
 }
-
-
-
+.Lhc-MianBan-ActiveBet-1-Input-box
+{
+  margin: 0px 5px;
+  width: 20%;
+  height: 80%;
+  border: .01rem solid #74739c;
+  border-radius: .5rem;
+  margin: .2.5rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.Lhc-MianBan-ActiveBet-1-Input
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --text-align:center;
+  --font-size:12px;
+}
 .Lhc-MianBan-ActiveBet-2
 {
   width:100%;  
-  height:70%; 
-  background-color:#3500FF;
+  height:65%; 
 }
