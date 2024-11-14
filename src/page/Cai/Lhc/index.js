@@ -1,4 +1,4 @@
-import { NavBar, Button , Tabs, SideBar , Input , Image } from "antd-mobile";
+import { NavBar, Button , Tabs, SideBar , Input , Image , Popup } from "antd-mobile";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import classnames from "classnames";
@@ -26,7 +26,7 @@ const Lhc = () => {
     { id: 4, text: "50" },
     { id: 5, text: "100" }
   ];
-  
+  const [visible1, setVisible1] = useState(false);
   // 控制骨架的显示
   const [loading, setLoading] = useState(false);
 
@@ -133,6 +133,7 @@ const Lhc = () => {
     }
     return "";
   };
+  /*
   // 点击数字时切换选中状态
   const handleClick = (number) => {
     setSelectedNumbers(
@@ -145,7 +146,15 @@ const Lhc = () => {
       selectedNumbers.includes(number) ? prevCount - 1 : prevCount + 1
     );
   };
-
+  */
+  const handleClick = (number) => {
+  setSelectedNumbers((prev) => {
+    const isSelected = prev.includes(number);
+    const newSelectedNumbers = isSelected ? prev.filter((n) => n !== number) : [...prev, number];
+    setBetCount(newSelectedNumbers.length);
+    return newSelectedNumbers;
+  });
+ };
   return (
     <div>
       <div className="Lhc-index">
@@ -316,7 +325,10 @@ const Lhc = () => {
               <div className="Lhc-MianBan-ActiveBet-1-Button">
                 <Image                     
                   width="25px"
-                  height="25px" 
+                  height="25px"
+                  onClick={() => {
+                     setVisible1(true)
+                  }}
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJ6SURBVHgB1VdRjtMwEJ1xUgnRIuUIvQHLCUhPQG+wVGX5XVCKtH/b/lVqyeafhZYTUE7Q7A3KDXIDKtr9obXNjJNA1V3RdJ0g8aQm9jjVe56xx2OEDL3eBx9RNMES9bqY9fudZdHv3YuLSVNu5Ret4UTTwxbr9dajV7Rr6/cn3vqHOgfUvkBcPG6IQS7SlRt1SbQn5kuEBT0Lq98Halg6W3e2a+MJ3q7UnAab3Fda+7cr2SZ7azjsJNgLrr+T3UONnVHYnUKJMN7dqLkGQ75EgW9BwSX3ESCpP3GeCSbnj7VQCZSIO+RStUaj7tSRooWACXmdPXMloALskVNkKTSPaia0w6iTaFQdbtN4u3QBd2aezVZu5JzHjCAtTs0bIXGhRNzndgdqS+mkNhbxLvgYU/tlKgQGpQm4N+bR64UZezNp5SIgI1e06Mdhd1ZKCP5GzuC4E/HvPpOH2Y6zFnCInEFun9A6aO+TWwsoTv7H7eFernnwGrAhT/8rryj13zxIgO3MpVS+CQmid3QIynD7Lo4SUDb5UQKqID9KQBXkhQVwtZQfLARPOe7TMsgLC9AaTRLhgyV9q2kQfDq1JS8sgE6t50YIH6OoB7kIKmbmNuSFBJgjVJuSbTken8WNhhvR+Z6XXb4NOeNgIpI/lc8VBRcVPOP1SrIYLx+3IS8kAHL3U1EB6Y9tMVluqBWH71/FYIGDArRW3+i+kFDrKwhc1DdU90fF635rAePwjGv8CCpCJUXpfyfAxBOV/b2wMFS6sA1vEFzzvj7P+jFUDEpqnk7zCvBtzJXS6dcc9SLL9T5UjJ3772e+CmLeI0+0hUAP/gFoayecVbn9C1xSAnz8dCFlAAAAAElFTkSuQmCC" />   
               </div>
               <div className="Lhc-MianBan-ActiveBet-1-Chips">
@@ -331,8 +343,31 @@ const Lhc = () => {
               </div>
             </div>
             <div className="Lhc-MianBan-ActiveBet-2">
-              <span>{betCount}</span>       
+              <span>{betCount}</span>
+              <p>已选号码: {selectedNumbers.join(".")}</p>
             </div>
+            <Popup
+              visible={visible1}
+              showCloseButton
+              onMaskClick={() => {
+                setVisible1(false)
+              }}
+              onClose={() => {
+                setVisible1(false)
+              }}
+              bodyStyle={{
+                maxWidth: '450px',
+                borderTopLeftRadius: '20px',
+                borderTopRightRadius: '20px',
+                minHeight: '20vh', 
+              }}
+            >
+              <div className="Lhc-MianBan-ActiveBet-2-Popup">
+              </div>
+              <div>
+                 6466464
+              </div>
+            </Popup>
           </div>
         )}
       </div>
