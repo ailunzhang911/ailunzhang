@@ -1,4 +1,4 @@
-import { NavBar, Button , Tabs, SideBar , Input , Image , Popup } from "antd-mobile";
+import { NavBar, Button , Tabs, SideBar , Input , Image , Popup , Form} from "antd-mobile";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import classnames from "classnames";
@@ -370,7 +370,7 @@ const Lhc = () => {
               }}
             >
               <div className="Lhc-MianBan-ActiveBet-2-Popup">
-                <span>编辑</span>
+                <span>编辑金额</span>
               </div>
               <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji">
                 {/*
@@ -380,9 +380,25 @@ const Lhc = () => {
                 <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
                 <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
                 */}
-                {Chips.map((item)=>(
-                  <Input key={item.id} className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder={item.text} />
-                ))} 
+                <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-1">
+                <Form>
+                  {Chips.map((item)=>(
+                    <Form.Item key={item.id}>
+                      <Input key={item.id} className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-1-Input" defaultValue={item.text} />
+                    </Form.Item>
+                  ))}
+                </Form>
+                </div>
+                <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2">
+                  <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button">
+                    <Button className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button-1" size='middle' color='primary' fill='solid'>
+                      恢复默认
+                    </Button>
+                    <Button className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button-2" size="middle" color='primary' fill='outline'>
+                      保存
+                    </Button>
+                  </div>
+                </div>
               </div>
             </Popup>
           </div>
