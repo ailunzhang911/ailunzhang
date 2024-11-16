@@ -155,6 +155,17 @@ const Lhc = () => {
     return newSelectedNumbers;
   });
  };
+  const xiazhuType = [
+  {
+       "playType": "单码",
+       "numbers": [],
+       "amount": 100
+  }];
+  // 将 data 的内容依次存入 Chips 的 numbers 属性
+  selectedNumbers.forEach((number) => {
+     xiazhuType[0].numbers.push(number); // 将每个 number 推入 numbers 数组
+  });
+  console.log(xiazhuType);
   return (
     <div>
       <div className="Lhc-index">
@@ -225,17 +236,13 @@ const Lhc = () => {
             })}
           >
             <div className="Lhc-MianBan-App">
-              <SideBar
+              <SideBar 
                 className="Lhc-MianBan-SideBar"
                 onChange={handleSideBarChange}
                 activeKey={activeKey}
-              >
-                {SideBarData.map((item) => (
-                  <SideBarData.Item
-                    className="Lhc-MianBan-SideBar-title"
-                    key={item.key}
-                    title={item.title}
-                  />
+                >
+                {SideBarData.map(item => (
+                  <SideBar.Item className="Lhc-MianBan-SideBar-title" key={item.key} title={item.title} />
                 ))}
               </SideBar>
               {activeKey === "Special Code" && (
