@@ -365,7 +365,7 @@ const Lhc = () => {
               <div className="Lhc-MianBan-ActiveBet-2-Popup">
               </div>
               <div>
-                 6466464
+                 测试
               </div>
             </Popup>
           </div>
