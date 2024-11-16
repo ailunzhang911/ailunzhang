@@ -163,9 +163,9 @@ const Lhc = () => {
   }];
   // 将 data 的内容依次存入 Chips 的 numbers 属性
   selectedNumbers.forEach((number) => {
-     xiazhuType[0].numbers.push(number); // 将每个 number 推入 numbers 数组
-  });
-  console.log(xiazhuType);
+     xiazhuType[0].numbers.push(number);
+  })
+  console.log(xiazhuType)
   return (
     <div>
       <div className="Lhc-index">
@@ -366,13 +366,23 @@ const Lhc = () => {
                 maxWidth: '450px',
                 borderTopLeftRadius: '20px',
                 borderTopRightRadius: '20px',
-                minHeight: '20vh', 
+                minHeight: '200px', 
               }}
             >
               <div className="Lhc-MianBan-ActiveBet-2-Popup">
+                <span>编辑</span>
               </div>
-              <div>
-                 测试
+              <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji">
+                {/*
+                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
+                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
+                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
+                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
+                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
+                */}
+                {Chips.map((item)=>(
+                  <Input key={item.id} className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder={item.text} />
+                ))} 
               </div>
             </Popup>
           </div>

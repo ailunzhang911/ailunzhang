@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { useState , useEffect } from 'react';
 import './index.css';
 import { http } from '@/utils';
+
+
 const Home = () => 
 {
    const Navigate = useNavigate();
@@ -100,15 +102,14 @@ const Home = () =>
          }
          <NoticeBar 
             className="Home-NoticeBar" 
-            content={demoLongText.map(
-              item=>       
-                 <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            content={demoLongText.map( item =>       
+                 <span key={item.key} >{item.key}.{item.text} &nbsp;&nbsp;&nbsp;&nbsp;</span>
               )
             }         
          />
          <div className="Home-Tabs">
             <div
-               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'Index'})}
+               className={classnames('Home-Tabs-App' , {'Home-Tabs-App-Active': activeTab === 'Index'})}
                onClick={() => setActiveTab('Index')}
             >
                 <Image 
@@ -119,7 +120,7 @@ const Home = () =>
                 <span>热门</span>                
             </div>
             <div 
-               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'CaiPiao'})} 
+               className={classnames('Home-Tabs-App' , {'Home-Tabs-App-Active': activeTab === 'CaiPiao'})} 
                onClick={() => setActiveTab('CaiPiao')}
             >
                 <Image 
@@ -130,7 +131,7 @@ const Home = () =>
                 <span>彩票</span>
             </div>
             <div 
-              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'DianZi'})} 
+              className={classnames('Home-Tabs-App' , {'Home-Tabs-App-Active': activeTab === 'DianZi'})} 
               onClick={() => setActiveTab('DianZi')}
             >
                <Image 
