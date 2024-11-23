@@ -1,15 +1,14 @@
-import { NavBar, Button , Tabs, SideBar , Input , Image , Popup , Form} from "antd-mobile";
+import { NavBar, Button , Tabs, SideBar , Input} from "antd-mobile";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useMemo } from "react";
 import classnames from "classnames";
 import { LhcApi } from "@/utils";
 import "./index.css";
 
 const Lhc = () => {
-  // 导航 hook
-  const navigate = useNavigate();
 
-  // 定义一个静态的数组 Huise 用于显示骨架占位符内容
+  const navigate = useNavigate();
+  // 常量数据
   const Huise = [
     { id: 1, text: "开" },
     { id: 2, text: "奖" },
@@ -24,16 +23,20 @@ const Lhc = () => {
     { id: 2, text: "20" },
     { id: 3, text: "30" },
     { id: 4, text: "50" },
-    { id: 5, text: "100" }
+    { id: 5, text: "100" },
   ];
-  const [visible1, setVisible1] = useState(false);
+  const SideBarData = [
+    { key: "Special Code", title: "特码" },
+    { key: "Teshaw", title: "特肖" },
+    { key: "Wave color", title: "波色" },
+  ];
+
   // 控制骨架的显示
   const [loading, setLoading] = useState(false);
 
   // 用于存储开奖信息的数据
   const [macaujc, setMacaujc] = useState([]);
   const [qiShu, setQiShu] = useState("2024XXX");
-
   // 定义一个函数用于获取数据
   const fetchData = async () => {
     setLoading(false); // 开始加载前先隐藏真实数据
@@ -53,9 +56,8 @@ const Lhc = () => {
           wave: waveArray[index],
           zodiac: zodiacArray[index],
         }));
-
-        setMacaujc(combinedData);
         setQiShu(expect);
+        setMacaujc(combinedData);
         setTimeout(() => {
           setLoading(true);
         }, 500);
@@ -63,7 +65,7 @@ const Lhc = () => {
         console.error("Unexpected response format");
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("获取数据时出错:", error);
     }
   };
   // useEffect 钩子用于页面加载时获取数据
@@ -73,23 +75,6 @@ const Lhc = () => {
 
   //号码选项
   const [selectedNumbers, setSelectedNumbers] = useState([]);
-  // 新增的状态用于统计选中的注数
-  const [betCount, setBetCount] = useState(0);
-  //SideBar数组
-  const SideBarData = [
-    {
-      key: "Special Code",
-      title: "特码",
-    },
-    {
-      key: "Teshaw",
-      title: "特肖",
-    },
-    {
-      key: "Wave color",
-      title: "波色",
-    },
-  ];
   // 用于管理Tabs切换
   const [activeTab, setActiveTab] = useState("Betting Area");
   const handleTabChange = (key) => {
@@ -101,29 +86,28 @@ const Lhc = () => {
     setActiveKey(key);
     //号码归零
     setSelectedNumbers([]);
-    //注数归零
-    setBetCount(0);
   };
   //选区背景颜色
   const colors = ["red", "blue", "green"];
   // 数字 1 到 49，并附带描述
-  const numbers = Array.from({ length: 49 }, (_, index) => ({
-    label: index + 1,
-    description: "48.5", // 这个描述可以与后端数据集成
-    value: index + 1,
-  }));
+  const numbers = useMemo(
+      () =>
+          Array.from({ length: 49 }, (_, index) => ({
+            label: index + 1,
+            description: "48.5",
+            value: index + 1,
+          })),
+      []
+  );
   // 预定义的红、蓝、绿类别的数字集合
-  const colorSets = {
-    red: new Set([
-      1, 2, 7, 8, 12, 13, 18, 19, 23, 24, 29, 30, 34, 35, 40, 45, 46,
-    ]),
-    blue: new Set([
-      4, 3, 9, 10, 14, 15, 20, 25, 26, 31, 36, 37, 41, 42, 47, 48,
-    ]),
-    green: new Set([
-      5, 6, 11, 16, 17, 21, 22, 27, 28, 32, 33, 38, 39, 43, 44, 49,
-    ]),
-  };
+  const colorSets = useMemo(
+      () => ({
+        red: new Set([1, 2, 7, 8, 12, 13, 18, 19, 23, 24, 29, 30, 34, 35, 40, 45, 46]),
+        blue: new Set([4, 3, 9, 10, 14, 15, 20, 25, 26, 31, 36, 37, 41, 42, 47, 48]),
+        green: new Set([5, 6, 11, 16, 17, 21, 22, 27, 28, 32, 33, 38, 39, 43, 44, 49]),
+      }),
+      []
+  );
   // 根据数字所属类别返回相应的颜色类名
   const getColorClass = (number) => {
     for (const color in colorSets) {
@@ -147,6 +131,7 @@ const Lhc = () => {
     );
   };
   */
+  /*
   const handleClick = (number) => {
   setSelectedNumbers((prev) => {
     const isSelected = prev.includes(number);
@@ -154,18 +139,74 @@ const Lhc = () => {
     setBetCount(newSelectedNumbers.length);
     return newSelectedNumbers;
   });
- };
+  };
+  */
+  const handleClick = (number) => {
+    setSelectedNumbers((prev) => {
+      const newSelected = prev.includes(number)
+          ? prev.filter((n) => n !== number)
+          : [...prev, number];
+      return newSelected;
+    });
+  };
+  /*
   const xiazhuType = [
   {
-       "playType": "单码",
-       "numbers": [],
-       "amount": 100
+       "playType": "特码",
+       "numbers": selectedNumbers,
+       "amount": zongjinge
   }];
+   */
+  /*
   // 将 data 的内容依次存入 Chips 的 numbers 属性
   selectedNumbers.forEach((number) => {
      xiazhuType[0].numbers.push(number);
-  })
-  console.log(xiazhuType)
+  })*/
+  const [zongjinge , setZongjinge] = useState(0);
+  const [Finishs , setFinishs] = useState(0);
+
+  // 使用 useMemo 只在 selectedNumbers 或 zongjinge 改变时重新计算 xiazhuType
+  const xiazhuType = useMemo(() => {
+    if(selectedNumbers.length>0&&zongjinge>0) {
+      return [
+        {
+          playType: "特码",
+          numbers: [...selectedNumbers], // 使用新的数组引用
+          amount: zongjinge
+        }
+      ];
+    }
+  }, [selectedNumbers, zongjinge]);
+
+  const Finish = (key) => {
+    const date = Number(key);
+    try {
+      if(typeof(date)==="number"){
+        setFinishs(key);
+      }
+    }catch(error) {
+      setFinishs(0);
+    }
+  }
+  /*
+  useEffect(()=>{
+    let date  = Number(Finishs) * xiazhuType[0].numbers.length;
+    setZongjinge(Number(date));
+    if(zongjinge===0&&Finishs===0){
+      setZongjinge(0)
+      setFinishs(0);
+    }
+  },[Finishs,xiazhuType[0].numbers.length]);
+   */
+  useEffect(() => {
+    const totalAmount = Finishs * selectedNumbers.length;
+    setZongjinge(totalAmount || 0); // 默认值为 0
+    if(Finishs<0){
+      setFinishs(0);
+    }
+  }, [Finishs, selectedNumbers.length]);
+
+  console.log(xiazhuType);
   return (
     <div>
       <div className="Lhc-index">
@@ -326,18 +367,9 @@ const Lhc = () => {
           </Tabs.Tab>          
         </Tabs>
              
-        {activeTab === "Betting Area" && (
+        {activeKey === "Special Code" && activeTab === "Betting Area" && (
           <div className="Lhc-MianBan-ActiveBet">
             <div className="Lhc-MianBan-ActiveBet-1">
-              <div className="Lhc-MianBan-ActiveBet-1-Button">
-                <Image                     
-                  width="25px"
-                  height="25px"
-                  onClick={() => {
-                     setVisible1(true)
-                  }}
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJ6SURBVHgB1VdRjtMwEJ1xUgnRIuUIvQHLCUhPQG+wVGX5XVCKtH/b/lVqyeafhZYTUE7Q7A3KDXIDKtr9obXNjJNA1V3RdJ0g8aQm9jjVe56xx2OEDL3eBx9RNMES9bqY9fudZdHv3YuLSVNu5Ret4UTTwxbr9dajV7Rr6/cn3vqHOgfUvkBcPG6IQS7SlRt1SbQn5kuEBT0Lq98Halg6W3e2a+MJ3q7UnAab3Fda+7cr2SZ7azjsJNgLrr+T3UONnVHYnUKJMN7dqLkGQ75EgW9BwSX3ESCpP3GeCSbnj7VQCZSIO+RStUaj7tSRooWACXmdPXMloALskVNkKTSPaia0w6iTaFQdbtN4u3QBd2aezVZu5JzHjCAtTs0bIXGhRNzndgdqS+mkNhbxLvgYU/tlKgQGpQm4N+bR64UZezNp5SIgI1e06Mdhd1ZKCP5GzuC4E/HvPpOH2Y6zFnCInEFun9A6aO+TWwsoTv7H7eFernnwGrAhT/8rryj13zxIgO3MpVS+CQmid3QIynD7Lo4SUDb5UQKqID9KQBXkhQVwtZQfLARPOe7TMsgLC9AaTRLhgyV9q2kQfDq1JS8sgE6t50YIH6OoB7kIKmbmNuSFBJgjVJuSbTken8WNhhvR+Z6XXb4NOeNgIpI/lc8VBRcVPOP1SrIYLx+3IS8kAHL3U1EB6Y9tMVluqBWH71/FYIGDArRW3+i+kFDrKwhc1DdU90fF635rAePwjGv8CCpCJUXpfyfAxBOV/b2wMFS6sA1vEFzzvj7P+jFUDEpqnk7zCvBtzJXS6dcc9SLL9T5UjJ3772e+CmLeI0+0hUAP/gFoayecVbn9C1xSAnz8dCFlAAAAAElFTkSuQmCC" />   
-              </div>
               <div className="Lhc-MianBan-ActiveBet-1-Chips">
                 {Chips.map((item)=>(
                   <div key={item.id} className="Lhc-MianBan-ActiveBet-1-Chips-img">
@@ -346,66 +378,20 @@ const Lhc = () => {
                 ))}
               </div>
               <div className="Lhc-MianBan-ActiveBet-1-Input-box">
-                <Input className="Lhc-MianBan-ActiveBet-1-Input" placeholder="输入金额" />
+                  <Input type="number"  min={0} onChange={Finish} className="Lhc-MianBan-ActiveBet-1-Input" placeholder="输入金额" />
               </div>
             </div>
             <div className="Lhc-MianBan-ActiveBet-2">
-              <span>{betCount}</span>
-              <p>已选号码: {selectedNumbers.join(".")}</p>
+              {/*这里添加一个点击事件，点击就上传xiazhuType到后端*/}
+              <Button className="Lhc-MianBan-ActiveBet-2-Button">
+                提交
+                <span className="Lhc-MianBan-ActiveBet-2-Button-span">{zongjinge}元</span>
+              </Button>
             </div>
-            <Popup
-              visible={visible1}
-              showCloseButton
-              onMaskClick={() => {
-                setVisible1(false)
-              }}
-              onClose={() => {
-                setVisible1(false)
-              }}
-              bodyStyle={{
-                maxWidth: '450px',
-                borderTopLeftRadius: '20px',
-                borderTopRightRadius: '20px',
-                minHeight: '200px', 
-              }}
-            >
-              <div className="Lhc-MianBan-ActiveBet-2-Popup">
-                <span>编辑金额</span>
-              </div>
-              <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji">
-                {/*
-                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
-                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
-                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
-                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
-                <Input className="Lhc-MianBan-ActiveBet-2-Popup-Input" placeholder="输入金额" />
-                */}
-                <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-1">
-                <Form>
-                  {Chips.map((item)=>(
-                    <Form.Item key={item.id}>
-                      <Input key={item.id} className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-1-Input" defaultValue={item.text} />
-                    </Form.Item>
-                  ))}
-                </Form>
-                </div>
-                <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2">
-                  <div className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button">
-                    <Button className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button-1" size='middle' color='primary' fill='solid'>
-                      恢复默认
-                    </Button>
-                    <Button className="Lhc-MianBan-ActiveBet-2-Popup-bianji-box-2-Button-2" size="middle" color='primary' fill='outline'>
-                      保存
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Popup>
           </div>
         )}
       </div>
     </div>
   );
 };
-
 export default Lhc;

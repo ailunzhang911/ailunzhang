@@ -10,7 +10,7 @@ const Home = () =>
    //判断登录
    const token = true;
    //余额
-   const Money = 120;
+   const Money = 888888;
    const [loading, setLoading] = useState(true); // 用于控制骨架的显示   
    const [value ,setValue] = useState([]);//用于管理请求数据 
    const [activeTab, setActiveTab] = useState('Index');//用于管理Tabs切换
@@ -87,7 +87,8 @@ const Home = () =>
             <Swiper indicator={() => null} loop={true} autoplay>
                {value.map(item => (
                   <Swiper.Item className="Home-Skeleton" key={item.id}>
-                     <Image 
+                     <Image
+                        key={item.id}
                         width="100%"
                         height="100%"
                         src={item.img}
@@ -102,7 +103,7 @@ const Home = () =>
             className="Home-NoticeBar" 
             content={demoLongText.map(
               item=>       
-                 <span>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                 <span key={item.key}>{item.key}.{item.text}&nbsp;&nbsp;&nbsp;&nbsp;</span>
               )
             }         
          />
@@ -118,8 +119,8 @@ const Home = () =>
                 />
                 <span>热门</span>                
             </div>
-            <div 
-               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'CaiPiao'})} 
+            <div
+               className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'CaiPiao'})}
                onClick={() => setActiveTab('CaiPiao')}
             >
                 <Image 
@@ -130,7 +131,7 @@ const Home = () =>
                 <span>彩票</span>
             </div>
             <div 
-              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'DianZi'})} 
+              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'DianZi'})}
               onClick={() => setActiveTab('DianZi')}
             >
                <Image 
@@ -141,7 +142,7 @@ const Home = () =>
                <span>电子</span>
             </div>        
             <div 
-              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'TiYu'})} 
+              className={classnames('Home-Tabs-App', {'Home-Tabs-App-Active': activeTab === 'TiYu'})}
               onClick={() => setActiveTab('TiYu')}
             >
                <Image 
@@ -158,24 +159,39 @@ const Home = () =>
          <div className="Home-Tabs-Content">
             {activeTab === 'Index' &&
                <Grid columns={3} gap={8}>
-                  <Grid.Item>
+                  <Grid.Item style={{
+                      width: '100%',
+                      height: '240px',
+                      borderRadius: '15px'
+                  }}>
                      <Image
                      onClick={() => Navigate('/Lhc')}
+                     style={{borderRadius: '15px'}}
                      width="100%"
                      height="100%" 
                      src="https://kk-hongkong-new.dbq9.com/master/h5/icon/H5-%E9%A6%99%E6%B8%AF%E5%85%AD%E5%90%88%E5%BD%A9@2.jpg"/>   
                   </Grid.Item>
-                  <Grid.Item>
+                  <Grid.Item style={{
+                      width: '100%',
+                      height: '240px',
+                      borderRadius: '15px'
+                  }}>
                      <Image 
                      width="100%"
-                     height="100%" 
+                     height="100%"
+                     style={{borderRadius: '15px'}}
                      src="https://kk-hongkong-new.dbq9.com/master/h5/icon/%E5%8A%A0%E6%8B%BF%E5%A4%A72.8@2.png"/>   
                   </Grid.Item>
-                  <Grid.Item>
+                  <Grid.Item style={{
+                      width: '100%',
+                      height: '240px',
+                      borderRadius: '15px'
+                  }}>
                      <Image 
                      width="100%"
-                     height="100%" 
-                     src="https://kk-hongkong-new.dbq9.com/master/h5/icon/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%BD%91%E7%9B%98%E8%B5%94%E7%8E%87@2.png"/>   
+                     height="100%"
+                     style={{borderRadius: '15px'}}
+                     src="https://kk-hongkong-new.dbq9.com/master/h5/icon/%E5%8A%A0%E6%8B%BF%E5%A4%A7%E7%BD%91%E7%9B%98%E8%B5%94%E7%8E%87@2.png"/>
                   </Grid.Item>
                </Grid>
             }
